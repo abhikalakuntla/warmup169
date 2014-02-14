@@ -11,6 +11,6 @@ urlpatterns = patterns('',
     url(r'^admin/$', include(admin.site.urls)),
     url(r'^users/add/$', 'main.views.add'),
     url(r'^users/login/$', 'main.views.login'),
-    url(r'^TESTAPI/resetFixture/$', 'main.views.TESTAPI_resetFixture'),
-    url(r'^TESTAPI/unitTests/$', 'main.views.my_test'),
+    url(r'^TESTAPI/resetFixture', 'main.views.TESTAPI_resetFixture'),
+    url(r'^TESTAPI/unitTests', 'main.views.my_test'),
 )

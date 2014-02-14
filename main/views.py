@@ -75,8 +75,9 @@ def TESTAPI_resetFixture(request):
 @csrf_exempt
 def my_test(request):
 	if request.method = "POST" and request.META.get('CONTENT_TYPE') == "application/json":	
-		pass
-	return HttpResponse("still to be done")
+		result = StringIO()
+
+	return HttpResponse(status=200)
 
 
 
