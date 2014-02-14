@@ -21,6 +21,10 @@ MAX_USERNAME_LEN = 128
 MAX_PASSWORD_LEN = 128
 
 
+@csrf_exempt
+def show(request):
+	return HttpResponse("frontend to come")
+
 # Create your views here.
 @csrf_exempt
 def login(request):
