@@ -10,7 +10,7 @@ ERR_BAD_PASSWORD = -4
 MAX_USERNAME_LENGTH = 128
 MAX_PASSWORD_LENGTH = 128
 
-class TestAdd(testLib.RestTestCase):
+class AllTests(testLib.RestTestCase):
 
     def test_add_success(self):
         data = { 
@@ -64,7 +64,6 @@ class TestAdd(testLib.RestTestCase):
         self.assertEqual(respData['errCode'], ERR_USER_EXISTS)
         self.assertTrue('count' not in respData)
 
-class TestLogin(testLib.RestTestCase):
 
     def test_login_success(self):
         data = { 

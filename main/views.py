@@ -82,11 +82,11 @@ def test(request):
 		res_to_return['totalTests'] = 0
 		for t in tests:
 			test = unittest.TestLoader().loadTestsFromTestCase(t)
-            testresult = unittest.TextTestRunner(stream = result, verbosity=5).run(test)
-            res_to_return['nrFailed'] += len(testresult.failures)
-            res_to_return['totalTests'] += testresult.testsRun
-        res_to_return['output'] = result.getValue()
-        return HttpResponse(json.dumps(response), content_type="application/json", status = 200)
+			testresult = unittest.TextTestRunner(stream = result, verbosity=5).run(test)
+			res_to_return['nrFailed'] += len(testresult.failures)
+			res_to_return['totalTests'] += testresult.testsRun
+		res_to_return['output'] = result.getValue()
+		return HttpResponse(json.dumps(response), content_type="application/json", status = 200)
 	return HttpResponse(status=200)
 
 
