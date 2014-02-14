@@ -29,7 +29,7 @@ def show(request):
 @csrf_exempt
 def login(request):
 	try:
-		if request.method = "POST" and request.META.get('CONTENT_TYPE') == "application/json":
+		if request.method == "POST" and request.META.get('CONTENT_TYPE') == "application/json":
 			req_load = json.loads(request.body)
 			login_count = UserModel.objects.login(username = req_load['user'], pswd = req_load['password']) #this value also might be negative for errs
 			res_to_return = {}
@@ -45,7 +45,7 @@ def login(request):
 @csrf_exempt
 def add(request):
 	try:
-		if request.method = "POST" and request.META.get('CONTENT_TYPE') == "application/json":
+		if request.method == "POST" and request.META.get('CONTENT_TYPE') == "application/json":
 			req_load = json.loads(request.body)
 			login_count = UserModel.objects.add(username = req_load['user'], pswd = req_load['password'])
 			res_to_return = {}
@@ -62,7 +62,7 @@ def add(request):
 @csrf_exempt
 def TESTAPI_resetFixture(request):
 	try:
-		if request.method = "POST" and request.META.get('CONTENT_TYPE') == "application/json":
+		if request.method == "POST" and request.META.get('CONTENT_TYPE') == "application/json":
 			res_to_return = {}
 			res_to_return['errCode'] = UserModel.objects.reset()
 			return HttpResponse(json.dumps(response), content_type= "application/json")
@@ -74,7 +74,7 @@ def TESTAPI_resetFixture(request):
 
 @csrf_exempt
 def test(request):
-	if request.method = "POST" and request.META.get('CONTENT_TYPE') == "application/json":	
+	if request.method == "POST" and request.META.get('CONTENT_TYPE') == "application/json":	
 		result = StringIO()
 		tests = (allTests,)
 		res_to_return = {}
