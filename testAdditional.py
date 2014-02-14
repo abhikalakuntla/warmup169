@@ -12,10 +12,12 @@ MAX_PASSWORD_LENGTH = 128
 
 class AllTests(testLib.RestTestCase):
 
+	longstring = "sflvbslkjbvkjefvkehvlfvjkerbfvkjwbevfbehbvliwebrvejvbevwlevkweklrrewfrwebiuewbrivebwrivebirvbewirvbwejhrbvwerbiwerfiwebriuenvihebvoebviwebvjbeijvnwerhvbewjvbeivbiwebveiurbve"
+
     def test_add_success(self):
         data = { 
-            'user' : 'test',
-            'password' : 'password',
+            'user' : 'user1',
+            'password' : 'pass1',
         }
         respData = self.makeRequest("/users/add", method="POST", data = data)
         self.assertTrue('errCode' in respData)
@@ -26,7 +28,7 @@ class AllTests(testLib.RestTestCase):
     def test_add_empty_user(self):
         data = {
             'user' : '',
-            'password' : 'password',
+            'password' : 'pass1',
         }
         respData = self.makeRequest("/users/add", method="POST", data = data)
         self.assertTrue('errCode' in respData)
@@ -35,7 +37,7 @@ class AllTests(testLib.RestTestCase):
 
     def test_add_long_username(self):
         data = {
-            'user' : 'asdfsadfadsfasdjhfdajshklfhkajldsfhklasdhfkashdfhasdhfklasdhfkashdfkhjasdkjfhlaskjldfhjkasdjhkflasjklhfljkhasdhjlfahjklsdfjlhkasjl',
+            'user' : longstring,
             'password' : 'password',
         }
         respData = self.makeRequest("/users/add", method="POST", data = data)
@@ -45,8 +47,8 @@ class AllTests(testLib.RestTestCase):
 
     def test_add_long_password(self):
         data = {
-            'user' : 'testy',
-            'password' : 'asdfsadfadsfasdjhfdajshklfhkajldsfhklasdhfkashdfhasdhfklasdhfkashdfkhjasdkjfhlaskjldfhjkasdjhkflasjklhfljkhasdhjlfahjklsdfjlhkasjl',
+            'user' : 'user2',
+            'password' : longstring,
         }
         respData = self.makeRequest("/users/add", method="POST", data = data)
         self.assertTrue('errCode' in respData)
@@ -55,7 +57,7 @@ class AllTests(testLib.RestTestCase):
 
     def test_add_existing_user(self):
         data = { 
-            'user' : 'test',
+            'user' : 'user1',
             'password' : 'password',
         }
         respData = self.makeRequest("/users/add", method="POST", data = data)
@@ -67,8 +69,8 @@ class AllTests(testLib.RestTestCase):
 
     def test_login_success(self):
         data = { 
-            'user' : 'test',
-            'password' : 'password',
+            'user' : 'user1',
+            'password' : 'pass1',
         }
         # Create the user
         respData = self.makeRequest("/users/add", method="POST", data = data)
@@ -86,7 +88,7 @@ class AllTests(testLib.RestTestCase):
 
     def test_login_fail(self):
         data = {
-            'user' : 'test',
+            'user' : 'user1',
             'password' : 'wrongpassword',
         }   
         respData = self.makeRequest("/users/login", method="POST", data = data)
