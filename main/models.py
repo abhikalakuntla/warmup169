@@ -12,7 +12,6 @@ MAX_USERNAME_LEN = 128
 MAX_PASSWORD_LEN = 128
 
 
-
 class UserModelManager(models.Manager):
 
 	def add(self, usr, pswd):

@@ -11,6 +11,15 @@ import unittest
 
 import json
 
+#GLOBALS:
+SUCCESS = 1
+ERR_BAD_CREDENTIALS = -1
+ERR_USER_EXISTS = -2
+ERR_BAD_USERNAME = -3
+ERR_BAD_PASSWORD = -4
+MAX_USERNAME_LEN = 128
+MAX_PASSWORD_LEN = 128
+
 
 # Create your views here.
 @csrf_exempt
@@ -48,14 +57,19 @@ def add(request):
 
 @csrf_exempt
 def TESTAPI_resetFixture(request):
-	if request.method = "POST" and request.META.get('CONTENT_TYPE') == "application/json":
-		pass
-	return HttpResponse("still to be done")
+	try:
+		if request.method = "POST" and request.META.get('CONTENT_TYPE') == "application/json":
+			res_to_return = {}
+			res_to_return['errCode'] = UserModel.objects.reset()
+			return HttpResponse(json.dumps(response), content_type= "application/json")
+		return HttpResponse(status=500)
+	except:
+		return HttpResponse(status=500)
 
 
 
 @csrf_exempt
-def TESTAPI_test(request):
+def my_test(request):
 	if request.method = "POST" and request.META.get('CONTENT_TYPE') == "application/json":	
 		pass
 	return HttpResponse("still to be done")
