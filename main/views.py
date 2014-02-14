@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 import main.models
 
-from django.views.decorators.crsf import csrf_exempt #all calls in django need csrf, this makes it so we dont need it. It's annoying right now 
+from django.views.decorators.csrf import csrf_exempt #all calls in django need csrf, this makes it so we dont need it. It's annoying right now 
 #and bad practice but that's fine
 from main.tests import allTests
 import unittest
