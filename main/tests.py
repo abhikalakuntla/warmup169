@@ -1,5 +1,5 @@
 from django.test import TestCase
-from main.models
+import main.models
 # Create your tests here.
 
 SUCCESS = 1
@@ -36,3 +36,5 @@ class allTests(TestCase):
 
 		the_user= UserModel.objects.add(user="user3", password="pass3")
 		self.assertEqual(the_user, 2)
+	def reset():
+		self.assertEqual(UserModel.objects.reset(), 1)

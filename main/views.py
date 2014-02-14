@@ -5,7 +5,7 @@ import main.models
 
 from django.views.decorators.crsf import csrf_exempt #all calls in django need csrf, this makes it so we dont need it. It's annoying right now 
 #and bad practice but that's fine
-
+from main.tests import allTests
 import unittest
 
 
@@ -40,7 +40,7 @@ def login(request):
 				res_to_return['errCode'] = login_count
 			return HttpResponse(json.dumps(res_to_return, content_type= "application/json"))
 	except:
-		return HttpResponse(status=200)
+		return HttpResponse(status=500)
 
 @csrf_exempt
 def add(request):
@@ -56,7 +56,7 @@ def add(request):
 				res_to_return['errCode'] = login_count
 			return HttpResponse(json.dumps(response), content_type="application/json")
 	except:
-		return HttpResponse(status = 200)
+		return HttpResponse(status = 500)
 
 
 @csrf_exempt
@@ -66,17 +66,27 @@ def TESTAPI_resetFixture(request):
 			res_to_return = {}
 			res_to_return['errCode'] = UserModel.objects.reset()
 			return HttpResponse(json.dumps(response), content_type= "application/json")
-		return HttpResponse(status=200)
+		return HttpResponse(status=500)
 	except:
-		return HttpResponse(status=200)
+		return HttpResponse(status=500)
 
 
 
 @csrf_exempt
-def my_test(request):
+def test(request):
 	if request.method = "POST" and request.META.get('CONTENT_TYPE') == "application/json":	
 		result = StringIO()
-
+		tests = (allTests,)
+		res_to_return = {}
+		res_to_return['nrFailed']= 0
+		res_to_return['totalTests'] = 0
+		for t in tests:
+			test = unittest.TestLoader().loadTestsFromTestCase(t)
+            testresult = unittest.TextTestRunner(stream = result, verbosity=5).run(test)
+            res_to_return['nrFailed'] += len(testresult.failures)
+            res_to_return['totalTests'] += testresult.testsRun
+        res_to_return['output'] = result.getValue()
+        return HttpResponse(json.dumps(response), content_type="application/json", status = 200)
 	return HttpResponse(status=200)
 
 
