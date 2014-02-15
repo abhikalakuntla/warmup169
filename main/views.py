@@ -54,7 +54,7 @@ def add(request):
 				res_to_return['count'] = login_count
 			else:
 				res_to_return['errCode'] = login_count
-			return HttpResponse(json.dumps(response), content_type="application/json")
+			return HttpResponse(json.dumps(res_to_return), content_type="application/json")
 	except:
 		return HttpResponse(status = 500)
 
@@ -62,10 +62,12 @@ def add(request):
 @csrf_exempt
 def TESTAPI_resetFixture(request):
 	try:
+		print ("im in herereree! in views")
 		if request.method == "POST" and request.META.get('CONTENT_TYPE') == "application/json":
 			res_to_return = {}
+			print("im in here!!!! in in views")
 			res_to_return['errCode'] = UserModel.objects.TESTAPI_resetFixture()
-			return HttpResponse(json.dumps(response), content_type= "application/json")
+			return HttpResponse(json.dumps(res_to_return), content_type= "application/json")
 	except:
 		return HttpResponse(status=500)
 
@@ -85,7 +87,7 @@ def test(request):
 			res_to_return['nrFailed'] += len(testresult.failures)
 			res_to_return['totalTests'] += testresult.testsRun
 		res_to_return['output'] = result.getValue()
-		return HttpResponse(json.dumps(response), content_type="application/json", status = 200)
+		return HttpResponse(json.dumps(res_to_return), content_type="application/json", status = 200)
 	return HttpResponse(status=200)
 
 
