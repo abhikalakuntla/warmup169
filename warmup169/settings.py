@@ -67,14 +67,14 @@ DATABASES = {
 
 """
 DATABASES = {
-  'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'd7ua01lbhbb54u',
-    'HOST': 'ec2-54-235-99-46.compute-1.amazonaws.com',
-    'PORT': 5432,
-    'USER': 'xmpbphblwuetyj',
-    'PASSWORD': 'ka5WtYugZWuPXQUYc8lfbeua7n'
-  }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',       # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'warmup169',                              # Or path to database file if using sqlite3.
+        'USER': 'root',                             # Not used with sqlite3.
+        'PASSWORD': 'Ego371!FTW',                   # Not used with sqlite3.
+        'HOST': '',                                 # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                                 # Set to empty string for default. Not used with sqlite3.
+    }
 }"""
 
 # Internationalization
