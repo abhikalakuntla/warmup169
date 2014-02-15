@@ -44,6 +44,7 @@ class UserModelManager(models.Manager):
 
 	
 	def TESTAPI_resetFixture(self): #for TESTAPI's reasons
+		print ("im in hereerererer!!!!!")
 		UserModel.objects.all().delete()
 		return SUCCESS
 
