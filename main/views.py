@@ -38,7 +38,7 @@ def login(request):
 				res_to_return['errCode'] = login_count
 			else:  
 				res_to_return['errCode'] = login_count
-			return HttpResponse(json.dumps(res_to_return, content_type= "application/json"))
+			return HttpResponse(json.dumps(res_to_return), content_type= "application/json")
 	except:
 		return HttpResponse(status=500)
 
@@ -66,7 +66,8 @@ def TESTAPI_resetFixture(request):
 		if request.method == "POST" and request.META.get('CONTENT_TYPE') == "application/json":
 			res_to_return = {}
 			print("im in here!!!! in in views")
-			res_to_return['errCode'] = UserModel.objects.TESTAPI_resetFixture()
+			UserModel.objects.all().delete()
+			res_to_return['errCode'] = SUCCESS
 			return HttpResponse(json.dumps(res_to_return), content_type= "application/json")
 	except:
 		return HttpResponse(status=500)
