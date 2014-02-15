@@ -25,17 +25,8 @@ class AllTests(testLib.RestTestCase):
         self.assertTrue('count' in respData)
         self.assertEqual(respData['count'], 1)
 
-    def test_add_empty_user(self):
-        data = {
-            'user' : '',
-            'password' : 'pass1',
-        }
-        respData = self.makeRequest("/users/add", method="POST", data = data)
-        self.assertTrue('errCode' in respData)
-        self.assertEqual(respData['errCode'], ERR_BAD_USERNAME)
-        self.assertTrue('count' not in respData)
-
-    def test_add_long_username(self):
+    
+    def test_long_user(self):
         data = {
             'user' : longstring,
             'password' : 'password',
@@ -45,7 +36,18 @@ class AllTests(testLib.RestTestCase):
         self.assertEqual(respData['errCode'], ERR_BAD_USERNAME)
         self.assertTrue('count' not in respData)        
 
-    def test_add_long_password(self):
+    def test_empty_user(self):
+        data = {
+            'user' : '',
+            'password' : 'pass1',
+        }
+        respData = self.makeRequest("/users/add", method="POST", data = data)
+        self.assertTrue('errCode' in respData)
+        self.assertEqual(respData['errCode'], ERR_BAD_USERNAME)
+        self.assertTrue('count' not in respData)
+
+
+    def test_long_password(self):
         data = {
             'user' : 'user2',
             'password' : longstring,
@@ -55,7 +57,7 @@ class AllTests(testLib.RestTestCase):
         self.assertEqual(respData['errCode'], ERR_BAD_PASSWORD)
         self.assertTrue('count' not in respData)        
 
-    def test_add_existing_user(self):
+    def test_existing_add(self):
         data = { 
             'user' : 'user1',
             'password' : 'password',
@@ -67,7 +69,7 @@ class AllTests(testLib.RestTestCase):
         self.assertTrue('count' not in respData)
 
 
-    def test_login_success(self):
+    def test_login(self):
         data = { 
             'user' : 'user1',
             'password' : 'pass1',
@@ -86,7 +88,7 @@ class AllTests(testLib.RestTestCase):
         self.assertTrue('count' in respData)
         self.assertEqual(respData['count'], 3)
 
-    def test_login_fail(self):
+    def test_bad_login(self):
         data = {
             'user' : 'user1',
             'password' : 'wrongpassword',

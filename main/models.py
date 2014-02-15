@@ -43,7 +43,7 @@ class UserModelManager(models.Manager):
 			return ERR_BAD_CREDENTIALS
 
 	
-	def reset(self): #for TESTAPI's reasons
+	def TESTAPI_resetFixture(self): #for TESTAPI's reasons
 		UserModel.objects.all().delete()
 		return SUCCESS
 
