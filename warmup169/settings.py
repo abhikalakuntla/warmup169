@@ -1,6 +1,6 @@
 
 
-PRODUCTION = False #turn False if on local machine
+PRODUCTION = True #turn False if on local machine
 
 
 
