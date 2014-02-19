@@ -1,3 +1,9 @@
+
+
+PRODUCTION = False #turn False if on local machine
+
+
+
 """
 Django settings for warmup169 project.
 
@@ -22,6 +28,7 @@ SECRET_KEY = 'y)ievx&ga)ib8h&vpuyj9i2)6g$!=*84gre^2t_aaw+$*k#j%e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -30,24 +37,24 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+	'django.contrib.admin',
+	'django.contrib.auth',
+	'django.contrib.contenttypes',
+	'django.contrib.sessions',
+	'django.contrib.messages',
+	'django.contrib.staticfiles',
 
-    #custom
-    'main',
+	#custom
+	'main',
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+	'django.contrib.sessions.middleware.SessionMiddleware',
+	'django.middleware.common.CommonMiddleware',
+	'django.middleware.csrf.CsrfViewMiddleware',
+	'django.contrib.auth.middleware.AuthenticationMiddleware',
+	'django.contrib.messages.middleware.MessageMiddleware',
+	'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'warmup169.urls'
@@ -58,23 +65,34 @@ WSGI_APPLICATION = 'warmup169.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+if(PRODUCTION == True):
+	
+
+	# Parse database configuration from $DATABASE_URL
+	import dj_database_url
+	DATABASES['default'] =  dj_database_url.config()
+
+
+	# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+	SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+else:
+	DATABASES = {
+		'default': {
+			'ENGINE': 'django.db.backends.sqlite3',
+			'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+		}
+	}
 
 """
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',       # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'warmup169',                              # Or path to database file if using sqlite3.
-        'USER': 'root',                             # Not used with sqlite3.
-        'PASSWORD': 'Ego371!FTW',                   # Not used with sqlite3.
-        'HOST': '',                                 # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                                 # Set to empty string for default. Not used with sqlite3.
-    }
+	'default': {
+		'ENGINE': 'django.db.backends.mysql',       # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+		'NAME': 'warmup169',                              # Or path to database file if using sqlite3.
+		'USER': 'root',                             # Not used with sqlite3.
+		'PASSWORD': 'Ego371!FTW',                   # Not used with sqlite3.
+		'HOST': '',                                 # Set to empty string for localhost. Not used with sqlite3.
+		'PORT': '',                                 # Set to empty string for default. Not used with sqlite3.
+	}
 }"""
 
 # Internationalization
@@ -90,13 +108,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
-
-# Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
 
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
@@ -109,7 +120,7 @@ STATIC_ROOT = 'static'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+	os.path.join(BASE_DIR, 'static'),
 )
 
 BASE_REL_PATH = os.path.dirname(os.path.realpath(__file__))
