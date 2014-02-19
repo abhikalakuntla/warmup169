@@ -28,14 +28,14 @@ class UserModelManager(models.Manager):
 			return ERR_BAD_PASSWORD
 		
 		#otherwise, create
-		the_user = UserModel(username=usr, password=pswd, count=1)
+		the_user = UserModel(username=usr, password=pswd, login_count=1)
 		the_user.save()
 		return SUCCESS
 
 
 	def login(self, usr, pswd):
 		try:
-			the_user = UserModel.objects.get(user = usr, password = pswd)
+			the_user = UserModel.objects.get(username=usr, password = pswd)
 			the_user.login_count+=1
 			the_user.save()
 			return the_user.login_count

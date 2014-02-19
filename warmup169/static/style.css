@@ -1,0 +1,237 @@
+/* Global */
+
+html {
+width: 100%;
+height: 100%;
+}
+
+body {  /*the outer layer of the site and global style attributes*/
+width: 100%;
+height: 100%;
+font-family: "Lato", "Museo Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+margin: 0px;
+overflow: hidden;
+
+
+background: #f7f5f2;
+}
+
+a {
+color: inherit;
+text-decoration: none;
+}
+
+input {
+    outline: none;
+}
+
+.clear {
+clear: both;
+}
+
+.img-scaled {
+width: 100%;
+}
+
+.img-scaled-wh {
+width: 100%;
+height: 100%;
+}
+
+.img-scaled-h {
+height: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+#data {
+    display: none;
+}
+
+#csrf {
+	display: none;
+}
+
+#background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#container {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    padding: 90px 0px;
+}
+#login-title {
+    font-size: 24px;
+    color: #757c78;
+    margin-bottom: 10px;
+}
+#login-content {
+    background: white;
+    padding: 20px;
+}
+#login-toolbox {
+    margin-top: 15px;
+}
+#login-submit {
+    display: inline-block;
+    font-size: 12px;
+    color: white;
+    background: #4989DA;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+#login-add {
+    display: inline-block; font-size: 12px; color: white; 
+    background: #5bb75c; padding: 10px 15px; cursor: pointer;
+}
+#login-subtitle {
+    margin-top: 10px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+}
+#login-box {
+    background: rgb(91, 103, 122);
+    margin-top: 15px;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+#login-box-progress {
+    background: #84B5D5;
+    width: 100%;
+    height: 8px;
+    position: relative;
+}
+.login-box-progress-bar {
+    position: absolute;
+    width: 0px;
+    height: 8px;
+    background: #3498db;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -webkit-transition: all 1000ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.login-box-progress-bar-active {
+	width: 400px;
+}
+#login-box-progress-bar::after {
+    content: '';
+    position: absolute;
+    right: 0px;
+    width: 8px;
+    height: 8px;
+    box-shadow: 0px 0px 10px #3498db;
+    border-radius: 50%;
+}
+#login-box-content {
+    padding: 20px;
+}
+.login-box-input-active {
+	box-shadow: 0px 0px 15px #1abc9c;
+}
+#login-box-username {
+    border-radius: 3px;
+    overflow: hidden;
+    -webkit-transition: linear 0.2s;
+}
+.login-box-icon {
+    width: 24px;
+    padding: 13px;
+    background: #edeae5;
+    float: left;
+}
+.login-box-input {
+    float: left;
+    padding: 15px 10px;
+    background: white;
+    width: 290px;
+}
+.login-box-input input {
+    margin: 0px;
+    border: none;
+    line-height: 20px;
+    font-size: 15px;
+    padding: 0px;
+    font-family: 'Lato';
+    color: #757c78;
+}
+#login-box-password {
+    margin-top: 10px;
+    border-radius: 3px;
+    overflow: hidden;
+    -webkit-transition: linear 0.2s;
+}
+#login-box-arrow {
+    border-top: 8px solid rgb(91, 103, 122);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    width: 0px;
+    height: 0px;
+    margin-left: 30px;
+}
+#login-box-submit {
+    margin-top: 12px;
+}
+#login-box-signin {
+    float: left;
+    background: rgba(0, 0, 0, 0.5);
+    background: #1abc9c;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+#login-box-logout {
+    float: left;
+    background: rgba(0, 0, 0, 0.5);
+    background: #de6868;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+#login-box-signup {
+    float: right;
+    color: white;
+    font-size: 13px;
+    border-bottom: 1px solid #DDD;
+    padding: 0px 3px 3px 3px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+#welcome-user {
+    font-size: 24px;
+    color: white;
+    font-weight: 300;
+}
+#welcome-message {
+    margin-top: 5px;
+    color: #757c78;
+    background: white;
+    padding: 20px;
+}
+#welcome-login-count {
+    color: white;
+    font-weight: 700;
+}
+#welcome-logout {
+    background: #da4f49;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    padding: 20px 0px;
+    cursor: pointer;
+}

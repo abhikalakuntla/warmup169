@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	{% load staticfiles %}
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="{% static "style.css" %}" />
+	<script type="text/javascript" src="{% static "jquery-1.8.3.min.js" %}" charset="utf-8"></script>
+	<script type="text/javascript" src="{% static "script.js" %}" charset="utf-8"></script>
+	<title>Login</title>
+</head>
+<body>
+	<div id="container">
+		<div id="login">
+			<div id="login-title">Login</div>
+			<div id="login-content">
+				<div id="login-message"></div>
+				<div id="login-username"><input id="login-username-input" placeholder="Username" /></div>
+				<div id="login-password"><input id="login-password-input" type="password" placeholder="Password" /></div>
+				<div id="login-toolbox">
+					<div id="login-submit">Sign In</div>
+					<div id="login-add">Add User</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
