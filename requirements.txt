@@ -23,5 +23,5 @@ pystache==0.5.3
 requests==2.2.1
 six==1.5.2
 static==1.0.2
-urllib3==1.7.1
+urllib3==1.26.5
 wsgiref==0.1.2
